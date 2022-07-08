@@ -1,0 +1,28 @@
+{
+  "name": "simply-blackjack",
+  "version": "1.0.0",
+  "description": "A simple blackjack package to generate and play games.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Townsy45/simply-blackjack.git"
+  },
+  "keywords": [
+    "blackjack",
+    "cards",
+    "simply",
+    "black",
+    "jack",
+    "casino",
+    "gambling"
+  ],
+  "author": "Townsy",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Townsy45/simply-blackjack/issues"
+  },
+  "homepage": "https://github.com/Townsy45/simply-blackjack#readme"
+}
