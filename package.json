@@ -1,6 +1,6 @@
 {
   "name": "simply-blackjack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple blackjack package to generate and play games.",
   "main": "src/index.js",
   "scripts": {
