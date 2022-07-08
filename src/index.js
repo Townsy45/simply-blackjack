@@ -9,7 +9,15 @@ module.exports = class Blackjack extends EventEmitter {
     this.state = 'waiting';
     this.dealer = [];
     this.player = [];
+    this.table = {};
     this.betAmount = null;
+  }
+
+  _updateTable() {
+    this.table = {
+     player: formatCards(this.player),
+     dealer: formatCards([this.dealer[0]])
+    };
   }
 
   bet(amount) {
@@ -24,19 +32,19 @@ module.exports = class Blackjack extends EventEmitter {
     this.player = this.cards.deal(2);
     this.dealer = this.cards.deal(2);
 
-    return {
+    this.table = {
       player: formatCards(this.player),
       dealer: formatCards([this.dealer[0]])
-    }
+    };
+
+    return this.table;
   }
 
   hit() {
-    this.player.push(...this.cards.deal(1));
-
-    return {
-      player: formatCards(this.player),
-      dealer: formatCards([this.dealer[0]])
-    }
+    const newCard = this.cards.deal(1)[0];
+    this.player.push(newCard);
+    this._updateTable();
+    return newCard;
   }
 
   stand() {
@@ -47,6 +55,7 @@ module.exports = class Blackjack extends EventEmitter {
       while (dealerSum < 17) {
         this.dealer.push(...this.cards.deal(1));
         dealerSum = sumCards(this.dealer);
+        this._updateTable();
       }
     }
 
@@ -112,5 +121,5 @@ function sumCards(cards) {
 }
 
 function formatCards(cards) {
-  return { total: sumCards(cards), cards: cards.map(c => c.name) };
+  return { total: sumCards(cards), cards };
 }
