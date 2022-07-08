@@ -9,7 +9,8 @@ module.exports = class Deck {
     let card = (suit, value) => {
       let name = value + ' of ' + suit;
       if (value.toUpperCase().includes('J') || value.toUpperCase().includes('Q') || value.toUpperCase().includes('K')) value = '10';
-      return {'name': name, 'suit': suit, 'value': value}
+      if (value.toUpperCase().includes('A')) value = '11';
+      return {'name': name, 'suit': suit, 'value': +value}
     };
 
     let values = ['2', '3','4','5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -27,15 +28,17 @@ module.exports = class Deck {
     for (let c = 0; c < this.deck.length; c++) { console.log(this.deck[c]) }
   }
 
-  shuffle() {
-    for (let c = this.deck.length -1; c >= 0; c--){
-      const tempVal = this.deck[c];
-      let randomIndex = Math.floor(Math.random() * this.deck.length);
+  shuffle(amount = 1) {
+    for (let i = 0; i < amount; i++) {
+      for (let c = this.deck.length -1; c >= 0; c--){
+        const tempVal = this.deck[c];
+        let randomIndex = Math.floor(Math.random() * this.deck.length);
 
-      // ensures that the random index isn't the same as the current index. It runs the function again if this returns as true
-      while (randomIndex === c) { randomIndex = Math.floor(Math.random() * this.deck.length) }
-      this.deck[c] = this.deck[randomIndex];
-      this.deck[randomIndex] = tempVal;
+        // ensures that the random index isn't the same as the current index. It runs the function again if this returns as true
+        while (randomIndex === c) { randomIndex = Math.floor(Math.random() * this.deck.length) }
+        this.deck[c] = this.deck[randomIndex];
+        this.deck[randomIndex] = tempVal;
+      }
     }
   }
 
