@@ -1,6 +1,8 @@
 # simply-blackjack
 A simple blackjack module to play and manage games.
 
+![Demo gif](http://g.recordit.co/mQaeTIzQcP.gif)
+
 ## Usage
 You will need to require the package and create a game just like this:
 ```js
