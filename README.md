@@ -14,15 +14,16 @@ const Game = new Blackjack({
   }
 });
 ```
+---
 
 ### Options
-These are the available options when creating a game:
 | Option            | Description                                        | Type   | Default |
 |-------------------|----------------------------------------------------|--------|---------|
 | decks             | The number of decks to use when dealing cards.     | Number | 3       |
 | payouts           |                                                    | Object | {}      |
 | payouts.blackjack | The multiplier for winning blackjack.              | Number | 1.5     |
 | payouts.default   | The default multiplier for winning (No blackjack). | Number | 1       |
+---
 
 ### Variables
 | Variable   | Description                                                                                               | Type   | Default                        |
@@ -34,9 +35,10 @@ These are the available options when creating a game:
 | player     | The players cards.                                                                                        | Array  | []                             |
 | table      | The current table, showing player and dealer cards (Minus hidden card) and their totals.                  | Object | {}                             |
 | betAmount  | The amount the player is betting.                                                                         | Number |                                |
+---
 
 ### Events
-These are examples of the follow events:
+These are examples of the following events:
 ```js
 // This will fire when the game has reached the end
 Game.on('end', (results) => {
@@ -52,11 +54,12 @@ Game.on('end', (results) => {
   // }
 });
 ```
+---
 
 ### Methods
-These are methods to perform actions to the game:
 
 **Bet**
+
 This will update the players bet on the game.
 | Param  | Type   | Required |
 |--------|--------|----------|
@@ -67,9 +70,9 @@ Game.bet(20);
 ```
 
 **Start**
+
 This method will start the game and draw 2 cards for the player, and the dealer (One dealer card is hidden).
 ```js
-// Updates your bet on the current game
 let cards = Game.start();
 
 console.log(cards);
@@ -104,6 +107,7 @@ console.log(cards);
 ```
 
 **Hit**
+
 This will give the player another card.
 ```js
 let cards = Game.hit();
@@ -118,6 +122,7 @@ console.log(cards);
 ```
 
 **Stand**
+
 This will trigger the dealer to get dealt cards and trigger the end event.
 ```js
 // Tells the game you no longer want cards
